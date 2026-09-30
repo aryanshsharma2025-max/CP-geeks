@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool canBuild(vector<int>& a, long long w, long long height)
+bool Build(vector<int> &a, long long w, long long height)
 {
     long long water = 0;
 
-    for(int x : a)
+    for (int x : a)
     {
-        if(x < height)
+        if (x < height)
         {
             water += height - x;
         }
@@ -21,7 +21,7 @@ int main()
     int t;
     cin >> t;
 
-    while(t--)
+    while (t--)
     {
         int n;
         long long w;
@@ -30,7 +30,7 @@ int main()
 
         vector<int> a(n);
 
-        for(int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
             cin >> a[i];
         }
@@ -38,11 +38,11 @@ int main()
         long long left = 1;
         long long right = *max_element(a.begin(), a.end()) + w;
 
-        while(left <= right)
+        while (left <= right)
         {
             long long mid = left + (right - left) / 2;
 
-            if(canBuild(a, w, mid))
+            if (Build(a, w, mid))
             {
                 left = mid + 1;
             }
